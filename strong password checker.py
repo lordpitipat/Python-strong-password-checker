@@ -1,4 +1,5 @@
 def strong_password(p_str: str) -> bool:
+    # scheck password length
     length = 6 <= len(p_str) <= 12
     
     # searching for digits
@@ -7,15 +8,16 @@ def strong_password(p_str: str) -> bool:
     # searching for uppercase
     uppercase = any(c.isupper() for c in p_str)
 
-    # # searching for lowercase
+    # searching for lowercase
     lowercase = any(c.islower() for c in p_str)
 
-    # # searching for symbols
+    # check if there is a symbol
     symbol = False
-    for sym in ['$','#','@']:
+    for sym in ['$','#','@','_','!','%','^','&','*','(',')','<','>','?','/','\\','|','}','{','~',':']:
         if sym in p_str:
             symbol = True
-    
+            
+    # check if there is consecutive element
     consecutive = False   
     for i in range(len(p_str)):
         if p_str[i] != p_str[-1]:
